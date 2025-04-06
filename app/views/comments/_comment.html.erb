@@ -1,0 +1,6 @@
+<%= turbo_frame_tag comment do %>
+  <div class="mb-4 p-4 border border-gray-200 rounded-lg shadow-sm">
+    <p class="text-gray-800"><%= comment.body %></p>
+    <p class="text-xs text-gray-500 mt-2">Posted <%= time_ago_in_words(comment.created_at) %> ago</p>
+  </div>
+<% end %>
