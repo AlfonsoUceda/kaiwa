@@ -4,6 +4,6 @@ class Comment < ApplicationRecord
   validates :body, presence: true
 
   def project_status_change?
-    comment_type == 'status_changed'
+    comment_type == "status_changed"
   end
 end

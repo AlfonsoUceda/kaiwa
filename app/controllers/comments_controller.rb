@@ -14,13 +14,13 @@ class CommentsController < ApplicationController
         format.turbo_stream do
           render turbo_stream: [
             turbo_stream.append(
-              'comments',
-              partial: 'comments/comment',
+              "comments",
+              partial: "comments/comment",
               locals: { comment: @comment }
             ),
             turbo_stream.replace(
-              'new_comment',
-              partial: 'projects/new_comment'
+              "new_comment",
+              partial: "projects/new_comment"
             )
           ]
         end

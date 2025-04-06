@@ -38,7 +38,7 @@ class ProjectsController < ApplicationController
       if @project.status != old_status
         @project.comments.create(
           body: "Project status changed from '#{old_status}' to '#{@project.status}'",
-          comment_type: 'status_changed'
+          comment_type: "status_changed"
         )
       end
 
