@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @project.comments.build(comment_params)
 
-    if @project.save
+    if @comment.save
       respond_to do |format|
         format.turbo_stream do
           render turbo_stream: [
@@ -26,7 +26,17 @@ class CommentsController < ApplicationController
         end
       end
     else
-      render :new, status: :unprocessable_entity
+      respond_to do |format|
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update(
+              "new_comment",
+              partial: "comments/form",
+              locals: { comment: @comment }
+            )
+          ]
+        end
+      end
     end
   end
 
