@@ -1,6 +1,16 @@
 <%= turbo_frame_tag comment do %>
-  <div class="mb-4 p-4 border border-gray-200 rounded-lg shadow-sm">
-    <p class="text-gray-800"><%= comment.body %></p>
-    <p class="text-xs text-gray-500 mt-2">Posted <%= time_ago_in_words(comment.created_at) %> ago</p>
-  </div>
+  <% if comment.project_status_change? %>
+    <div class="mb-4 flex items-start space-x-3 p-4 bg-blue-50 border border-blue-200 rounded-md shadow-sm">
+      <div class="text-blue-500">🔄</div>
+      <div>
+        <p class="text-sm font-medium text-blue-800"><%= comment.body %></p>
+        <p class="text-xs text-blue-600 mt-1"><%= time_ago_in_words(comment.created_at) %> ago</p>
+      </div>
+    </div>
+  <% else %>
+    <div class="mb-4 p-4 border border-gray-200 rounded-lg shadow-sm">
+      <p class="text-gray-800"><%= comment.body %></p>
+      <p class="text-xs text-gray-500 mt-2">Posted <%= time_ago_in_words(comment.created_at) %> ago</p>
+    </div>
+  <% end %>
 <% end %>

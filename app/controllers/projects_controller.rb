@@ -32,7 +32,16 @@ class ProjectsController < ApplicationController
 
   # PATCH/PUT /projects/1
   def update
+    old_status = @project.status
+
     if @project.update(project_params)
+      if @project.status != old_status
+        @project.comments.create(
+          body: "Project status changed from '#{old_status}' to '#{@project.status}'",
+          comment_type: 'status_changed'
+        )
+      end
+
       redirect_to @project, notice: "Project was successfully updated.", status: :see_other
     else
       render :edit, status: :unprocessable_entity
