@@ -1,10 +1,24 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @project %>
+<%# render @project %>
 
-<div>
-  <%= link_to "Edit this project", edit_project_path(@project) %> |
-  <%= link_to "Back to projects", projects_path %>
+<div class="max-w-2xl mx-auto bg-white p-6 shadow-md rounded-lg">
+  <h1 class="text-2xl font-bold mb-4">Project Details</h1>
 
-  <%= button_to "Destroy this project", @project, method: :delete %>
+  <div class="space-y-4 text-gray-800">
+    <div>
+      <p class="text-sm text-gray-500">Title</p>
+      <p class="text-lg font-medium"><%= @project.title %></p>
+    </div>
+
+    <div>
+      <p class="text-sm text-gray-500">Status</p>
+      <p class="text-lg font-medium"><%= @project.status %></p>
+    </div>
+  </div>
+
+  <div class="mt-6 flex space-x-4">
+    <%= link_to 'Edit', edit_project_path(@project), class: "px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600" %>
+    <%= link_to 'Back', projects_path, class: "px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300" %>
+  </div>
 </div>

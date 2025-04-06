@@ -1,27 +1,31 @@
-<%= form_with(model: project) do |form| %>
-  <% if project.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+<div class="max-w-2xl bg-white p-6 shadow-md rounded-lg">
+  <%= form_with(model: project, class: "space-y-8") do |form| %>
+    <% if project.errors.any? %>
+      <div class="bg-red-100 text-red-800 border border-red-300 p-4 rounded-lg">
+        <h2 class="font-semibold mb-2">
+          <%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:
+        </h2>
 
-      <ul>
-        <% project.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <ul class="list-disc list-inside">
+          <% project.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="flex flex-col space-y-1">
+      <%= form.label :title, class: "text-sm font-semibold text-gray-700" %>
+      <%= form.text_field :title, class: "px-4 py-2 rounded-xl shadow-sm border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition duration-150 ease-in-out" %>
+    </div>
+
+    <div class="flex flex-col space-y-1">
+      <%= form.label :status, class: "text-sm font-semibold text-gray-700" %>
+      <%= form.text_field :status, class: "px-4 py-2 rounded-xl shadow-sm border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition duration-150 ease-in-out" %>
+    </div>
+
+    <div>
+      <%= form.submit class: "px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" %>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.text_field :status %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

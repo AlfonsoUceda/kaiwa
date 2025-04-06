@@ -2,15 +2,21 @@
 
 <% content_for :title, "Projects" %>
 
-<h1>Projects</h1>
+<h1 class="text-3xl font-bold mb-6">Projects</h1>
 
-<div id="projects">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
   <% @projects.each do |project| %>
-    <%= render project %>
-    <p>
-      <%= link_to "Show this project", project %>
-    </p>
+    <div class="bg-white shadow rounded-lg p-4 border border-gray-200">
+      <h2 class="text-xl font-semibold mb-2"><%= project.title %></h2>
+
+      <div class="mt-4 flex justify-between text-sm text-blue-600">
+        <%= link_to 'Show', project, class: "hover:underline" %>
+        <%= link_to 'Edit', edit_project_path(project), class: "hover:underline text-yellow-600" %>
+        <%= button_to 'Destroy', project_path(project), method: :delete, data: { turbo_confirm: 'Are you sure?' }, class: "hover:underline text-red-600" %>
+      </div>
+    </div>
   <% end %>
 </div>
 
-<%= link_to "New project", new_project_path %>
+<%= link_to 'New Project', new_project_path, class: "inline-block mt-6 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600" %>
+
