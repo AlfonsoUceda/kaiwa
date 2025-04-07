@@ -12,7 +12,7 @@ class ProjectsTest < ApplicationSystemTestCase
 
   test "should create project" do
     visit projects_url
-    click_on "New project"
+    click_on "New Project"
 
     fill_in "Status", with: @project.status
     fill_in "Title", with: @project.title
@@ -24,7 +24,7 @@ class ProjectsTest < ApplicationSystemTestCase
 
   test "should update Project" do
     visit project_url(@project)
-    click_on "Edit this project", match: :first
+    click_on "Edit", match: :first
 
     fill_in "Status", with: @project.status
     fill_in "Title", with: @project.title
@@ -35,8 +35,10 @@ class ProjectsTest < ApplicationSystemTestCase
   end
 
   test "should destroy Project" do
-    visit project_url(@project)
-    click_on "Destroy this project", match: :first
+    visit projects_url
+    accept_confirm do
+      click_on "Destroy", match: :first
+    end
 
     assert_text "Project was successfully destroyed"
   end
