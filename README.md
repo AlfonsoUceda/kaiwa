@@ -3,6 +3,8 @@
 Kaiwa (会話) helps you to create projects, comment inside them and track the changes of the
 project's statuses
 
+URL: https://kaiwa-r0fy.onrender.com
+
 ## Table of Contents
 
 - [Tech Stack](#tech-stack)
@@ -17,12 +19,20 @@ project's statuses
 
 ## Q/A Teammates
 
-Q: Should projects page be in the first thing someone sees when accessing the platform?
+Q: Should projects page be the root page?
 A: Yes, projects page should be the home
 
 Q: How should I display the projects?
 A: You can use a table-like design to displayed them, it would be nice that you can see actions
    buttons to the right of the project row.
+
+Q: Is it ok to have projects status form field as a text field?
+A: Yes, for this prototype is ok but usually you have to use an enum where you can select an option
+   from a limited set of choices, using a gem like [Enumerize](https://github.com/brainspec/enumerize)
+   will help you to manage it, it is much better than default rails `enum` feature that uses integers
+   but it is possible to use strings too that will avoid to check the application code to understand the
+   integer value.
+   E.g. https://testdouble.com/insights/optimized-rails-enums-with-postgres 
 
 Q: Can I display comments inside project show page?
 A: Yeah, that's the way to do it, so it is like a pull request page where you can see the whole comments
